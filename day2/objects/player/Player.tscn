@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://01dgmpv1w4cs"]
+
+[ext_resource type="Script" path="res://day2/objects/player/Player.gd" id="1_2dr2e"]
+[ext_resource type="Texture2D" uid="uid://8hvy4niutivq" path="res://art/player.png" id="2_sk7n4"]
+[ext_resource type="AudioStream" uid="uid://lk8e5wmeyi11" path="res://audio/jump.wav" id="3_txnip"]
+[ext_resource type="AudioStream" uid="uid://hmfv6fpdayjh" path="res://audio/pickup.wav" id="4_chj7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce1u6"]
+size = Vector2(10, 10)
+
+[sub_resource type="Animation" id="Animation_o3066"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2c27h"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_lagiq"]
+resource_name = "in_air"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_w2hag"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjsju"]
+_data = {
+"RESET": SubResource("Animation_o3066"),
+"idle": SubResource("Animation_2c27h"),
+"in_air": SubResource("Animation_lagiq"),
+"run": SubResource("Animation_w2hag")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_2dr2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ce1u6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sk7n4")
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tjsju")
+}
+autoplay = "idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "Time: 0"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 536.0
+offset_right = 624.0
+offset_bottom = 23.0
+text = "Coins: 0"
+horizontal_alignment = 2
+autowrap_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_txnip")
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_chj7y")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

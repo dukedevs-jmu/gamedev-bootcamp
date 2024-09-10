@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://n6545ue0hdtd"]
+
+[ext_resource type="Script" path="res://day2/solution/GoalSolution.gd" id="1_6xf0o"]
+[ext_resource type="Texture2D" uid="uid://dmgirn2c2l0rr" path="res://art/goal.png" id="1_uqp6u"]
+
+[sub_resource type="Animation" id="Animation_l1b0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nms4s"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntb3p"]
+_data = {
+"RESET": SubResource("Animation_l1b0o"),
+"idle": SubResource("Animation_nms4s")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eja8l"]
+size = Vector2(10, 10)
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6xf0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_uqp6u")
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ntb3p")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_eja8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
