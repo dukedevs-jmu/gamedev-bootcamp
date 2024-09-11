@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 200
 const GRAVITY = 12
-const JUMP_HEIGHT = -320
+const JUMP_HEIGHT = 320
 
 # Called every physics frame!
 # Default physics FPS is 60, and this works
@@ -23,7 +23,8 @@ func _physics_process(delta):
 	# Jump
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			velocity.y = JUMP_HEIGHT
+			# In Godot, Y is negative when moving up.
+			velocity.y = -JUMP_HEIGHT
 	
 	# A built-in function to process this CharacterBody2D's physics.
 	# This will be called every frame to allow for smooth movement!
