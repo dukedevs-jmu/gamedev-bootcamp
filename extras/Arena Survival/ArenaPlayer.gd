@@ -23,8 +23,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	
-#Helo
+	# Cool game
+
 
 func _on_hitbox_body_entered(body):
 	if dashing:
