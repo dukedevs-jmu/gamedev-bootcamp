@@ -24,7 +24,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-
+#Helo
 
 func _on_hitbox_body_entered(body):
 	if dashing:
