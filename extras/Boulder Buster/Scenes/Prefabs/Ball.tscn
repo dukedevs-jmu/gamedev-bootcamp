@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://d231xc1iv0dpx"]
+
+[ext_resource type="Script" path="res://extras/Boulder Buster/Scripts/BallController.gd" id="1_52ul7"]
+[ext_resource type="Texture2D" uid="uid://dv1muq6ocqtee" path="res://extras/Boulder Buster/Sprites/Ball.png" id="1_yx5lc"]
+[ext_resource type="PhysicsMaterial" uid="uid://dagth1d740wb4" path="res://extras/Boulder Buster/Materials/Physics Materials/BouncyBallMaterial.tres" id="2_180ln"]
+[ext_resource type="AudioStream" uid="uid://cosgesh1lttp2" path="res://extras/Boulder Buster/Audio/Sound Effects/Bar Collision.wav" id="4_8r0oh"]
+[ext_resource type="AudioStream" uid="uid://ck4o3a5dknq7p" path="res://extras/Boulder Buster/Audio/Sound Effects/Boulder Collision.wav" id="5_mffgb"]
+[ext_resource type="AudioStream" uid="uid://dtjqakynm2fla" path="res://extras/Boulder Buster/Audio/Sound Effects/Boulder Explosion.wav" id="6_o5sel"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l82dg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv44l"]
+size = Vector2(967.79, 64)
+
+[node name="Ball" type="Node2D"]
+position = Vector2(320, 200)
+script = ExtResource("1_52ul7")
+ball_max_speed = 200.0
+ball_acceleration = 50.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = ExtResource("2_180ln")
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_l82dg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-0.0816345, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_yx5lc")
+
+[node name="BarCollisionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8r0oh")
+
+[node name="BoulderCollisionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mffgb")
+volume_db = -5.0
+pitch_scale = 0.5
+
+[node name="BoulderDestrutionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_o5sel")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 216)
+shape = SubResource("RectangleShape2D_pv44l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(448, 216)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_pv44l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-448, 216)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_pv44l")
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ck4o3a5dknq7p"
+path="res://.godot/imported/Boulder Collision.wav-8e8e9e84b99bea85dad1e60e69e7f337.sample"
+
+[deps]
+
+source_file="res://extras/Boulder Buster/Audio/Sound Effects/Boulder Collision.wav"
+dest_files=["res://.godot/imported/Boulder Collision.wav-8e8e9e84b99bea85dad1e60e69e7f337.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

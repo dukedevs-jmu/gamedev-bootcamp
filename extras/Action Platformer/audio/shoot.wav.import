@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jeq38fb34p3o"
+path="res://.godot/imported/shoot.wav-93da09d6b4f4b32e3428a5b9d43b8e99.sample"
+
+[deps]
+
+source_file="res://extras/Action Platformer/audio/shoot.wav"
+dest_files=["res://.godot/imported/shoot.wav-93da09d6b4f4b32e3428a5b9d43b8e99.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

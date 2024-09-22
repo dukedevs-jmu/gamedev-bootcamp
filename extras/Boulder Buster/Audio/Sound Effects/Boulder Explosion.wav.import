@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtjqakynm2fla"
+path="res://.godot/imported/Boulder Explosion.wav-baf650b7259c5a75077ed4c28f4d0063.sample"
+
+[deps]
+
+source_file="res://extras/Boulder Buster/Audio/Sound Effects/Boulder Explosion.wav"
+dest_files=["res://.godot/imported/Boulder Explosion.wav-baf650b7259c5a75077ed4c28f4d0063.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

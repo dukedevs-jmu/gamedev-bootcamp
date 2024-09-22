@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcnbfr8rgubjj"]
+
+[ext_resource type="Script" path="res://extras/Arena Survival/ArenaLogic.gd" id="1_l16k1"]
+[ext_resource type="Script" path="res://extras/Arena Survival/ArenaPlayer.gd" id="3_6nbcn"]
+[ext_resource type="AudioStream" uid="uid://deeshx062m2hj" path="res://audio/music/travels.ogg" id="4_8wjjr"]
+[ext_resource type="Texture2D" uid="uid://cy6wv16hqvj7j" path="res://art/guy.png" id="4_o5lmq"]
+[ext_resource type="AudioStream" uid="uid://lk8e5wmeyi11" path="res://audio/jump.wav" id="5_wtqs7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti4w7"]
+size = Vector2(672, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbqlp"]
+size = Vector2(16, 360)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sv3rj"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj5l7"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_cros1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_l16k1")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Wall1" type="StaticBody2D" parent="."]
+position = Vector2(320, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1"]
+shape = SubResource("RectangleShape2D_ti4w7")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(320, 368)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+shape = SubResource("RectangleShape2D_ti4w7")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(-8, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+shape = SubResource("RectangleShape2D_mbqlp")
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(648, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+shape = SubResource("RectangleShape2D_mbqlp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8wjjr")
+autoplay = true
+
+[node name="ArenaPlayer" type="CharacterBody2D" parent="."]
+position = Vector2(320, 192)
+collision_layer = 2
+script = ExtResource("3_6nbcn")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArenaPlayer"]
+texture = ExtResource("4_o5lmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaPlayer"]
+shape = SubResource("CircleShape2D_sv3rj")
+
+[node name="Hitbox" type="Area2D" parent="ArenaPlayer"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaPlayer/Hitbox"]
+shape = SubResource("CircleShape2D_xj5l7")
+
+[node name="DashTimer" type="Timer" parent="ArenaPlayer"]
+wait_time = 0.5
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="ArenaPlayer"]
+one_shot = true
+
+[node name="DashTrail" type="CPUParticles2D" parent="ArenaPlayer"]
+show_behind_parent = true
+emitting = false
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("4_o5lmq")
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_cros1")
+
+[node name="DashSound" type="AudioStreamPlayer" parent="ArenaPlayer"]
+stream = ExtResource("5_wtqs7")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="ArenaPlayer/Hitbox" to="ArenaPlayer" method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="ArenaPlayer/DashTimer" to="ArenaPlayer" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

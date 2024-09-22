@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw2fv3b7ftjh8"]
+
+[ext_resource type="Script" path="res://extras/Action Platformer/objects/Enemy.gd" id="1_5gmh8"]
+[ext_resource type="Texture2D" uid="uid://bmay2p0dr2bvl" path="res://extras/Action Platformer/art/actionstuff.png" id="2_l3286"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pngw6"]
+size = Vector2(8, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mc5y"]
+size = Vector2(8, 14)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_5gmh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_pngw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_l3286")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="DetectFloor" type="RayCast2D" parent="Sprite2D"]
+position = Vector2(8, 8)
+target_position = Vector2(0, 4)
+
+[node name="DetectWall" type="RayCast2D" parent="Sprite2D"]
+position = Vector2(8, 0)
+target_position = Vector2(4, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7mc5y")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

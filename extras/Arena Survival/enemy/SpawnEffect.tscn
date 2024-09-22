@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqnrd00s4qql3"]
+
+[ext_resource type="Texture2D" uid="uid://d20i2etvj50ay" path="res://extras/Arena Survival/art/evilguy.png" id="1_gg7a5"]
+[ext_resource type="Script" path="res://extras/Arena Survival/enemy/SpawnEffect.gd" id="2_4o0fb"]
+
+[sub_resource type="Animation" id="Animation_7i7fx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_y1x5p"]
+resource_name = "idle"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c560i"]
+_data = {
+"RESET": SubResource("Animation_7i7fx"),
+"idle": SubResource("Animation_y1x5p")
+}
+
+[node name="SpawnEffect" type="Sprite2D"]
+texture = ExtResource("1_gg7a5")
+hframes = 3
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 32, 48, 16)
+script = ExtResource("2_4o0fb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c560i")
+}
+autoplay = "idle"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfqrbcwo6wuud"]
+
+[ext_resource type="Script" path="res://extras/Boulder Buster/Scripts/VFXDestroyer.gd" id="1_cbacm"]
+[ext_resource type="Material" uid="uid://c354iqb0dtjag" path="res://extras/Boulder Buster/Materials/ProcessMaterials/BigShrapnelProcessMaterial.tres" id="2_4rahk"]
+[ext_resource type="Texture2D" uid="uid://d1b47mqaje8ng" path="res://extras/Boulder Buster/Sprites/Shrapnel/Sharpnel 1.png" id="3_0icd7"]
+[ext_resource type="Texture2D" uid="uid://c2i42namhyqta" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 2.png" id="4_cxnb6"]
+[ext_resource type="Texture2D" uid="uid://jr5lo6obqiya" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 3.png" id="5_rikbu"]
+[ext_resource type="Texture2D" uid="uid://6vxwdkpqj45g" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 4.png" id="6_vta87"]
+[ext_resource type="Texture2D" uid="uid://dt7n8ihvfj036" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 5.png" id="7_6xv6f"]
+[ext_resource type="Texture2D" uid="uid://dlkevxqnk8ouu" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 6.png" id="8_qe77d"]
+[ext_resource type="Texture2D" uid="uid://ccoxu3wgwunj" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 8.png" id="9_6ywqd"]
+[ext_resource type="Texture2D" uid="uid://d15qfhc3ishx6" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 9.png" id="10_03twu"]
+[ext_resource type="Texture2D" uid="uid://bqddbc5mgvbtc" path="res://extras/Boulder Buster/Sprites/Shrapnel/Shrapnel 10.png" id="11_4esye"]
+
+[node name="BoulderDestructionVFX" type="Node2D"]
+script = ExtResource("1_cbacm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("3_0icd7")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("4_cxnb6")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("5_rikbu")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("6_vta87")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("7_6xv6f")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("8_qe77d")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D7" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("9_6ywqd")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D8" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("10_03twu")
+one_shot = true
+explosiveness = 1.0
+
+[node name="GPUParticles2D9" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 3
+process_material = ExtResource("2_4rahk")
+texture = ExtResource("11_4esye")
+one_shot = true
+explosiveness = 1.0

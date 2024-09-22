@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://babewbx5vt3sa"]
+
+[ext_resource type="Script" path="res://extras/RPG Demo/objects/pot/ShatterEffect.gd" id="1_ubrxq"]
+
+[sub_resource type="Gradient" id="Gradient_lr8ge"]
+offsets = PackedFloat32Array(0.851393, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="ShatterEffect" type="CPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 12
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.4
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+damping_min = 40.0
+damping_max = 40.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_lr8ge")
+script = ExtResource("1_ubrxq")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

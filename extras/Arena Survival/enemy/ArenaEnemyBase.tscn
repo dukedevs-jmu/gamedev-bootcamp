@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://uquqijbsg2kr"]
+
+[ext_resource type="Script" path="res://extras/Arena Survival/enemy/BasicEnemy.gd" id="1_av7y6"]
+[ext_resource type="Texture2D" uid="uid://d20i2etvj50ay" path="res://extras/Arena Survival/art/evilguy.png" id="1_m5xhc"]
+
+[sub_resource type="Animation" id="Animation_kepbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4asvj"]
+resource_name = "pain"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyo4j"]
+_data = {
+"RESET": SubResource("Animation_kepbq"),
+"pain": SubResource("Animation_4asvj")
+}
+
+[node name="ArenaEnemyBase" type="CharacterBody2D"]
+editor_description = "Used as a base for enemies, not intended to be spawned on its own.
+
+Resources such as collision shapes are left empty so they can be uniquely created in actual enemies."
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_av7y6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m5xhc")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="BounceDelay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="BasicAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yyo4j")
+}

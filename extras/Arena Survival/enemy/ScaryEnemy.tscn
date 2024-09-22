@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://mc0mefqcb8e8"]
+
+[ext_resource type="PackedScene" uid="uid://uquqijbsg2kr" path="res://extras/Arena Survival/enemy/ArenaEnemyBase.tscn" id="1_trjik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3ymu"]
+radius = 20.0
+
+[node name="ArenaEnemyBase" instance=ExtResource("1_trjik")]
+health = 3
+speed = 72
+chase_range = 150
+
+[node name="Sprite2D" parent="." index="0"]
+region_rect = Rect2(80, 0, 48, 48)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_p3ymu")

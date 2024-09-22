@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2bdp2v2xr2y3"]
+
+[ext_resource type="PackedScene" uid="uid://cv21bqej1u443" path="res://extras/Boulder Buster/Scenes/Prefabs/Paddle.tscn" id="1_f74yw"]
+[ext_resource type="Script" path="res://extras/Boulder Buster/Scenes/Levels/GameController.gd" id="1_hgmpp"]
+[ext_resource type="Script" path="res://extras/Boulder Buster/Scripts/BoulderLayoutResource.gd" id="2_xve53"]
+[ext_resource type="PhysicsMaterial" uid="uid://c318pq4u58go" path="res://extras/Boulder Buster/Materials/Physics Materials/WallMaterial.tres" id="3_061nt"]
+[ext_resource type="PhysicsMaterial" uid="uid://bcrcmqkf5mip1" path="res://extras/Boulder Buster/Materials/Physics Materials/AbsorbMaterial.tres" id="4_5srp8"]
+[ext_resource type="AudioStream" uid="uid://c7tqo7fvaghd2" path="res://extras/Boulder Buster/Audio/Music/MainTrack.mp3" id="6_e88ia"]
+
+[sub_resource type="Resource" id="Resource_r8yde"]
+script = ExtResource("2_xve53")
+boulder_list = Array[int]([1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0])
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wfh70"]
+b = Vector2(-2.79753e-05, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kedhd"]
+size = Vector2(370, 82.0007)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spk21"]
+size = Vector2(82, 370.002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4meh"]
+size = Vector2(65.9999, 776)
+
+[node name="Level" type="Node2D" groups=["GameController"]]
+script = ExtResource("1_hgmpp")
+boulder_layouts = Array[ExtResource("2_xve53")]([SubResource("Resource_r8yde"), null, null, null])
+
+[node name="Paddle" parent="." instance=ExtResource("1_f74yw")]
+position = Vector2(320, 336)
+
+[node name="Boulders" type="Node2D" parent="."]
+
+[node name="PlayerWalls" type="StaticBody2D" parent="."]
+position = Vector2(1, 0)
+rotation = -1.5708
+collision_layer = 2
+collision_mask = 2
+physics_material_override = ExtResource("4_5srp8")
+
+[node name="BottomWall" type="CollisionShape2D" parent="PlayerWalls"]
+position = Vector2(-360, -1.57361e-05)
+shape = SubResource("SegmentShape2D_wfh70")
+
+[node name="RightWall" type="CollisionShape2D" parent="PlayerWalls"]
+position = Vector2(0, 623)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_wfh70")
+
+[node name="LeftWall" type="CollisionShape2D" parent="PlayerWalls"]
+position = Vector2(-2.57492e-05, 15)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_wfh70")
+
+[node name="BallWalls" type="StaticBody2D" parent="."]
+rotation = -1.5708
+collision_layer = 4
+collision_mask = 4
+physics_material_override = ExtResource("3_061nt")
+
+[node name="TopWall" type="CollisionShape2D" parent="BallWalls"]
+position = Vector2(-175, -31.0003)
+shape = SubResource("RectangleShape2D_kedhd")
+
+[node name="RightWall" type="CollisionShape2D" parent="BallWalls"]
+position = Vector2(-175.001, 662.999)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_spk21")
+
+[node name="LeftWall" type="CollisionShape2D" parent="BallWalls"]
+position = Vector2(23, 316)
+shape = SubResource("RectangleShape2D_v4meh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e88ia")
+volume_db = -10.0
+autoplay = true

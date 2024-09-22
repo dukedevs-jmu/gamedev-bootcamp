@@ -1,0 +1,21 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=2 format=3 uid="uid://dn44p0f2ytadv"]
+
+[ext_resource type="Texture2D" uid="uid://b4dwdrbtxgbr1" path="res://extras/Boulder Buster/Materials/Curves/ShrapnelScaleCurve.tres" id="1_74lbv"]
+
+[resource]
+emission_shape = 2
+emission_sphere_radius = 3.0
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -500.0
+angular_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 0.75
+scale_curve = ExtResource("1_74lbv")

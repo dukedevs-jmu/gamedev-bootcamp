@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://lxh1r3tygdkp"]
+
+[ext_resource type="Script" path="res://extras/Action Platformer/ActionPlayer.gd" id="1_oal73"]
+[ext_resource type="Texture2D" uid="uid://qguurvq1jc3w" path="res://extras/Action Platformer/art/playeraction.png" id="1_ysdr2"]
+[ext_resource type="AudioStream" uid="uid://jeq38fb34p3o" path="res://extras/Action Platformer/audio/shoot.wav" id="3_6ln0e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hjrg"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_hncfh"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_peedv"]
+resource_name = "in_air"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_aavv4"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vwxj"]
+_data = {
+"idle": SubResource("Animation_hncfh"),
+"in_air": SubResource("Animation_peedv"),
+"run": SubResource("Animation_aavv4")
+}
+
+[node name="ActionPlayer" type="CharacterBody2D"]
+editor_description = "Platformer character that can shoot.
+
+Has a dynamic camera "
+collision_layer = 2
+script = ExtResource("1_oal73")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ysdr2")
+hframes = 4
+
+[node name="Muzzle" type="Marker2D" parent="Sprite2D"]
+position = Vector2(11, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(64, 0)
+zoom = Vector2(2, 2)
+limit_top = -320
+limit_bottom = 48
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+editor_draw_limits = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_1hjrg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4vwxj")
+}
+
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6ln0e")

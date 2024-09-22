@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3hni17ubu4oc"]
+
+[ext_resource type="PackedScene" uid="uid://uquqijbsg2kr" path="res://extras/Arena Survival/enemy/ArenaEnemyBase.tscn" id="1_qc4no"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q62gw"]
+radius = 15.0
+
+[node name="ArenaEnemyBase" instance=ExtResource("1_qc4no")]
+collision_priority = 2.0
+health = 2
+speed = 32
+
+[node name="Sprite2D" parent="." index="0"]
+region_rect = Rect2(16, 0, 32, 32)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_q62gw")
