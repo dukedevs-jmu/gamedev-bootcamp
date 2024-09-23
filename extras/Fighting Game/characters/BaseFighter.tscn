@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bte3s4s0cg2bq"]
+
+[ext_resource type="Script" path="res://extras/Fighting Game/characters/PlayerFighter.gd" id="1_2kvl8"]
+[ext_resource type="AudioStream" uid="uid://d0b5ppd44ki41" path="res://extras/Fighting Game/audio/hit.wav" id="2_lb2nf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b636n"]
+size = Vector2(16, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15d45"]
+size = Vector2(32, 96)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8rs1b"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("2_lb2nf")
+
+[node name="BaseFighter" type="CharacterBody2D"]
+editor_description = "Base fighter. Has basic functionality, but requires a sprite, animation, and hitboxes for attacks."
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_2kvl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_b636n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="BotDecisionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+editor_description = "Detects incoming hits."
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_15d45")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8rs1b")
+
+[node name="Block" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8rs1b")
+pitch_scale = 3.0
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8rs1b")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

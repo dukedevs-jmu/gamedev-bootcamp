@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://qkeig2k1yqse"]
+
+[ext_resource type="Script" path="res://extras/Fighting Game/characters/Hitbox.gd" id="1_cfmex"]
+
+[node name="Hitbox" type="Area2D"]
+editor_description = "Deals damage to hurtboxes. Set the damage and knockback in the exported variables (Inspector)."
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_cfmex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
