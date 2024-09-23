@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://rkefb8w506xa"]
+
+[ext_resource type="Script" path="res://extras/Fighting Game/FightingGame.gd" id="1_ecdof"]
+[ext_resource type="Texture2D" uid="uid://cscexac0waes4" path="res://extras/Fighting Game/art/hpbarfull.png" id="3_4tneb"]
+[ext_resource type="PackedScene" uid="uid://djevcjb3uv5es" path="res://extras/Fighting Game/utils/character_select.tscn" id="4_poow3"]
+[ext_resource type="AudioStream" uid="uid://b7nx48xensvjv" path="res://extras/Fighting Game/audio/streetside.mp3" id="4_xk12k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnolo"]
+size = Vector2(640, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bydu"]
+size = Vector2(32, 416)
+
+[node name="FightingGame" type="Node2D"]
+script = ExtResource("1_ecdof")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(320, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_mnolo")
+
+[node name="Wall1" type="StaticBody2D" parent="."]
+position = Vector2(16, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_2bydu")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(624, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_2bydu")
+
+[node name="HP1" type="TextureProgressBar" parent="."]
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 56.0
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("3_4tneb")
+
+[node name="HP2" type="TextureProgressBar" parent="."]
+offset_left = 376.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 56.0
+max_value = 50.0
+value = 50.0
+fill_mode = 1
+texture_progress = ExtResource("3_4tneb")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xk12k")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 288.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -40.0
+offset_right = 86.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "choose your fighters"
+horizontal_alignment = 1
+
+[node name="CharacterSelect1" parent="UI" instance=ExtResource("4_poow3")]
+offset_left = 120.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 152.0
+
+[node name="CharacterSelect2" parent="UI" instance=ExtResource("4_poow3")]
+offset_left = 480.0
+offset_top = 120.0
+offset_right = 520.0
+offset_bottom = 160.0
+
+[node name="Start" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 152.0
+offset_right = 351.0
+offset_bottom = 183.0
+text = "start"
+
+[node name="WinText" type="Label" parent="."]
+offset_left = 296.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 71.0
+
+[node name="Restart" type="Button" parent="."]
+visible = false
+offset_left = 288.0
+offset_top = 296.0
+offset_right = 349.0
+offset_bottom = 327.0
+text = "restart"
+
+[connection signal="pressed" from="UI/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
