@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxt233dp7gbtl"]
+
+[ext_resource type="Script" path="res://extras/Grid Movement/scenes/Player/gridplayer.gd" id="1_1k1dx"]
+[ext_resource type="Texture2D" uid="uid://8q4v4klbagb" path="res://extras/Grid Movement/art/Gridude.png" id="2_73xd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csgwu"]
+size = Vector2(16, 16)
+
+[node name="GridPlayer" type="CharacterBody2D"]
+script = ExtResource("1_1k1dx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_73xd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_csgwu")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
