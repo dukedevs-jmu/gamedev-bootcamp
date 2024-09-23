@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
 # RPG Demo by Leo Torrijos
+# Includes 4 directional movement, a melee attack,
+# pots, and interactable objects with text popups.
+#
+# Controls:
+# Arrows - Move
+# Z - Melee
+# Space - Interact
 #
 # Many aspects of this character are controlled by
 # AnimationPlayer and AnimationTree. They are incredibly
