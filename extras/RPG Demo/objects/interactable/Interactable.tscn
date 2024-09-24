@@ -18,4 +18,4 @@ shape = SubResource("RectangleShape2D_1qqpw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fyw0i")
 region_enabled = true
-region_rect = Rect2(12, 0, 16, 16)
+region_rect = Rect2(16, 0, 16, 16)

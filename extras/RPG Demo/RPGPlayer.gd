@@ -72,6 +72,7 @@ func move_state():
 		if $AttackPivot/Interact.is_colliding():
 			$AnimationTree.get("parameters/playback").travel("Idle")
 			dialogue($AttackPivot/Interact.get_collider().text)
+			$InteractSound.play()
 			state = "DIALOGUE"
 
 func attack_state():
