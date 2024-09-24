@@ -1,5 +1,12 @@
 extends Node2D
 
+# A horde survival game by Leo Torrijos
+# Attack enemies that spawn in by dashing into them.
+#
+# Controls:
+# Arrows - Move
+# Z - Dash
+
 var spawn_effect = preload("res://extras/Arena Survival/enemy/SpawnEffect.tscn")
 
 var enemy = {
@@ -47,3 +54,7 @@ func pick_location():
 	var effect = spawn_effect.instantiate()
 	effect.position = Vector2(32 + randi_range(0, 200), 32 + randi_range(0, 144))
 	add_child(effect)
+
+
+func _on_death_timer_timeout():
+	get_tree().reload_current_scene()

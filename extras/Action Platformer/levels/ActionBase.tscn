@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfin7jj20r676"]
 
 [ext_resource type="Texture2D" uid="uid://blj7m7b0b0d45" path="res://extras/Action Platformer/art/actiontiles.png" id="1_u07eg"]
-[ext_resource type="PackedScene" uid="uid://lxh1r3tygdkp" path="res://extras/Action Platformer/ActionPlayer.tscn" id="1_xmf0y"]
+[ext_resource type="PackedScene" uid="uid://lxh1r3tygdkp" path="res://extras/Action Platformer/objects/player/ActionPlayer.tscn" id="1_xmf0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ovekt"]
 texture = ExtResource("1_u07eg")

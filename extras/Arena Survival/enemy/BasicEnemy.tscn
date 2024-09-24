@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://de7w54f6fbjoi"]
+[gd_scene load_steps=3 format=3 uid="uid://de7w54f6fbjoi"]
 
 [ext_resource type="PackedScene" uid="uid://uquqijbsg2kr" path="res://extras/Arena Survival/enemy/ArenaEnemyBase.tscn" id="1_m60o8"]
-[ext_resource type="AudioStream" uid="uid://bfxkqkmpycu4" path="res://extras/Ship Game/die.wav" id="2_3l0lu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdqm7"]
 radius = 8.0
@@ -10,7 +9,3 @@ radius = 8.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_hdqm7")
-
-[node name="Hurt" type="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource("2_3l0lu")
-pitch_scale = 3.0

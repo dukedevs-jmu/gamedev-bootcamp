@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
 # RPG Demo by Leo Torrijos
+# Includes 4 directional movement, a melee attack,
+# pots, and interactable objects with text popups.
+#
+# Controls:
+# Arrows - Move
+# Z - Melee
+# Space - Interact
 #
 # Many aspects of this character are controlled by
 # AnimationPlayer and AnimationTree. They are incredibly
@@ -65,6 +72,7 @@ func move_state():
 		if $AttackPivot/Interact.is_colliding():
 			$AnimationTree.get("parameters/playback").travel("Idle")
 			dialogue($AttackPivot/Interact.get_collider().text)
+			$InteractSound.play()
 			state = "DIALOGUE"
 
 func attack_state():

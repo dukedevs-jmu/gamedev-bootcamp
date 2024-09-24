@@ -21,11 +21,11 @@ var characters = {
 	4 : preload("res://extras/Fighting Game/characters/Ninja.tscn"),
 }
 
-
 func _on_start_pressed():
 	spawn_player(1, $UI/CharacterSelect1.current_char, false)
 	spawn_player(2, $UI/CharacterSelect2.current_char, true)
-	$Music.play()
+	$CharacterSelectMusic.stop()
+	$FightMusic.play()
 	$UI.hide()
 
 func spawn_player(player_id, character, bot):

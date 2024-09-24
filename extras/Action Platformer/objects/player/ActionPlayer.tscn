@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://lxh1r3tygdkp"]
 
-[ext_resource type="Script" path="res://extras/Action Platformer/ActionPlayer.gd" id="1_oal73"]
+[ext_resource type="Script" path="res://extras/Action Platformer/objects/player/ActionPlayer.gd" id="1_oal73"]
 [ext_resource type="Texture2D" uid="uid://qguurvq1jc3w" path="res://extras/Action Platformer/art/playeraction.png" id="1_ysdr2"]
 [ext_resource type="AudioStream" uid="uid://jeq38fb34p3o" path="res://extras/Action Platformer/audio/shoot.wav" id="3_6ln0e"]
 

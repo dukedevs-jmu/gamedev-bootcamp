@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://rkefb8w506xa"]
+[gd_scene load_steps=8 format=3 uid="uid://rkefb8w506xa"]
 
 [ext_resource type="Script" path="res://extras/Fighting Game/FightingGame.gd" id="1_ecdof"]
+[ext_resource type="AudioStream" uid="uid://dy16s6hi3skgn" path="res://extras/Fighting Game/audio/fight.ogg" id="3_0xegt"]
 [ext_resource type="Texture2D" uid="uid://cscexac0waes4" path="res://extras/Fighting Game/art/hpbarfull.png" id="3_4tneb"]
 [ext_resource type="PackedScene" uid="uid://djevcjb3uv5es" path="res://extras/Fighting Game/utils/character_select.tscn" id="4_poow3"]
-[ext_resource type="AudioStream" uid="uid://b7nx48xensvjv" path="res://extras/Fighting Game/audio/streetside.mp3" id="4_xk12k"]
+[ext_resource type="AudioStream" uid="uid://bpfinyiln8inn" path="res://extras/Fighting Game/audio/characterselect.ogg" id="4_uvq02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnolo"]
 size = Vector2(640, 32)
@@ -42,6 +43,7 @@ offset_bottom = 56.0
 max_value = 50.0
 value = 50.0
 texture_progress = ExtResource("3_4tneb")
+metadata/_edit_use_anchors_ = true
 
 [node name="HP2" type="TextureProgressBar" parent="."]
 offset_left = 376.0
@@ -52,9 +54,15 @@ max_value = 50.0
 value = 50.0
 fill_mode = 1
 texture_progress = ExtResource("3_4tneb")
+metadata/_edit_use_anchors_ = true
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_xk12k")
+[node name="FightMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0xegt")
+
+[node name="CharacterSelectMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uvq02")
+volume_db = -3.748
+autoplay = true
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -63,6 +71,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 288.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 1
@@ -79,18 +88,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "choose your fighters"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSelect1" parent="UI" instance=ExtResource("4_poow3")]
 offset_left = 120.0
 offset_top = 112.0
 offset_right = 160.0
 offset_bottom = 152.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CharacterSelect2" parent="UI" instance=ExtResource("4_poow3")]
 offset_left = 480.0
 offset_top = 120.0
 offset_right = 520.0
 offset_bottom = 160.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Button" parent="UI"]
 layout_mode = 0
@@ -99,12 +111,14 @@ offset_top = 152.0
 offset_right = 351.0
 offset_bottom = 183.0
 text = "start"
+metadata/_edit_use_anchors_ = true
 
 [node name="WinText" type="Label" parent="."]
 offset_left = 296.0
 offset_top = 48.0
 offset_right = 336.0
 offset_bottom = 71.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Restart" type="Button" parent="."]
 visible = false

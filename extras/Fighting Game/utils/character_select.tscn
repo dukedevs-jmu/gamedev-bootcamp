@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djevcjb3uv5es"]
+[gd_scene load_steps=3 format=3 uid="uid://djevcjb3uv5es"]
 
 [ext_resource type="Script" path="res://extras/Fighting Game/utils/CharacterSelect.gd" id="1_dytsk"]
+[ext_resource type="AudioStream" uid="uid://cobhnmh0f5r4n" path="res://extras/Fighting Game/audio/select.wav" id="2_gpsu4"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -39,6 +40,9 @@ offset_bottom = -15.5
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
+
+[node name="Blip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gpsu4")
 
 [connection signal="pressed" from="Left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="Right" to="." method="_on_right_pressed"]

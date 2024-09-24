@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw2fv3b7ftjh8"]
 
-[ext_resource type="Script" path="res://extras/Action Platformer/objects/Enemy.gd" id="1_5gmh8"]
+[ext_resource type="Script" path="res://extras/Action Platformer/objects/enemy/Enemy.gd" id="1_5gmh8"]
 [ext_resource type="Texture2D" uid="uid://bmay2p0dr2bvl" path="res://extras/Action Platformer/art/actionstuff.png" id="2_l3286"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pngw6"]

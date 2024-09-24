@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcnbfr8rgubjj"]
+[gd_scene load_steps=12 format=3 uid="uid://bcnbfr8rgubjj"]
 
 [ext_resource type="Script" path="res://extras/Arena Survival/ArenaLogic.gd" id="1_l16k1"]
+[ext_resource type="AudioStream" uid="uid://ca3kff41erthw" path="res://extras/Arena Survival/audio/arenagame.ogg" id="2_87j2e"]
 [ext_resource type="Script" path="res://extras/Arena Survival/ArenaPlayer.gd" id="3_6nbcn"]
-[ext_resource type="AudioStream" uid="uid://deeshx062m2hj" path="res://audio/music/travels.ogg" id="4_8wjjr"]
 [ext_resource type="Texture2D" uid="uid://cy6wv16hqvj7j" path="res://art/guy.png" id="4_o5lmq"]
 [ext_resource type="AudioStream" uid="uid://lk8e5wmeyi11" path="res://audio/jump.wav" id="5_wtqs7"]
+[ext_resource type="AudioStream" uid="uid://d0b5ppd44ki41" path="res://extras/Fighting Game/audio/hit.wav" id="6_c70dc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ti4w7"]
 size = Vector2(672, 16)
@@ -50,8 +51,8 @@ position = Vector2(648, 180)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
 shape = SubResource("RectangleShape2D_mbqlp")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_8wjjr")
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_87j2e")
 autoplay = true
 
 [node name="ArenaPlayer" type="CharacterBody2D" parent="."]
@@ -91,10 +92,23 @@ color_ramp = SubResource("Gradient_cros1")
 [node name="DashSound" type="AudioStreamPlayer" parent="ArenaPlayer"]
 stream = ExtResource("5_wtqs7")
 
+[node name="DeathTimer" type="Timer" parent="ArenaPlayer"]
+wait_time = 1.5
+one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer" parent="ArenaPlayer"]
+stream = ExtResource("6_c70dc")
+pitch_scale = 3.0
+
+[node name="HitSound2" type="AudioStreamPlayer" parent="ArenaPlayer"]
+stream = ExtResource("6_c70dc")
+pitch_scale = 3.0
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="ArenaPlayer/Hitbox" to="ArenaPlayer" method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="ArenaPlayer/DashTimer" to="ArenaPlayer" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="ArenaPlayer/DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

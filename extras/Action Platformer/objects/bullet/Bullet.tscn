@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://677odwv3hviu"]
 
 [ext_resource type="Texture2D" uid="uid://bmay2p0dr2bvl" path="res://extras/Action Platformer/art/actionstuff.png" id="1_cmu76"]
-[ext_resource type="Script" path="res://extras/Action Platformer/Bullet.gd" id="1_e0p3d"]
+[ext_resource type="Script" path="res://extras/Action Platformer/objects/bullet/Bullet.gd" id="1_e0p3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5umh"]
 size = Vector2(6, 6)
