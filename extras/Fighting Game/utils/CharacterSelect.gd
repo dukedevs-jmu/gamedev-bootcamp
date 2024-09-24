@@ -11,6 +11,7 @@ func _on_left_pressed():
 		current_char = names.size() - 1
 	else:
 		current_char -= 1
+	$Blip.play()
 	update_name()
 
 
@@ -19,6 +20,7 @@ func _on_right_pressed():
 		current_char = 0
 	else:
 		current_char += 1
+	$Blip.play()
 	update_name()
 
 func update_name():
