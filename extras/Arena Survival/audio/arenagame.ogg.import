@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ca3kff41erthw"
+path="res://.godot/imported/arenagame.ogg-3b0a9434ee462743e837f3376d95112e.oggvorbisstr"
+
+[deps]
+
+source_file="res://extras/Arena Survival/audio/arenagame.ogg"
+dest_files=["res://.godot/imported/arenagame.ogg-3b0a9434ee462743e837f3376d95112e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
