@@ -100,10 +100,6 @@ one_shot = true
 stream = ExtResource("6_c70dc")
 pitch_scale = 3.0
 
-[node name="HitSound2" type="AudioStreamPlayer" parent="ArenaPlayer"]
-stream = ExtResource("6_c70dc")
-pitch_scale = 3.0
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
