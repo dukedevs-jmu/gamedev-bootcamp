@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bfxkqkmpycu4"
-path="res://.godot/imported/die.wav-cc3bca3ec7bbe064c9211b51deadef7c.sample"
+path="res://.godot/imported/die.wav-c58434b0cf50c7f3c9168aba4a407086.sample"
 
 [deps]
 
-source_file="res://extras/Ship Game/die.wav"
-dest_files=["res://.godot/imported/die.wav-cc3bca3ec7bbe064c9211b51deadef7c.sample"]
+source_file="res://extras/Ship Game/audio/die.wav"
+dest_files=["res://.godot/imported/die.wav-c58434b0cf50c7f3c9168aba4a407086.sample"]
 
 [params]
 
