@@ -5,6 +5,7 @@ const DASH_SPEED = 600
 const ACCEL = 16
 
 var dashing = false
+var dead = false
 
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -28,8 +29,11 @@ func _physics_process(delta):
 func _on_hitbox_body_entered(body):
 	if dashing:
 		body.hurt(1)
+		$HitSound.play()
 	else:
-		get_tree().reload_current_scene()
+		hide()
+		dead = true
+		$DeathTimer.start()
 
 
 func _on_dash_timer_timeout():
