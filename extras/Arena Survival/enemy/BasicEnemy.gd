@@ -20,7 +20,7 @@ func _physics_process(delta):
 	
 	var player_pos = player.global_position
 	
-	if global_position.distance_to(player_pos) <= chase_range:
+	if global_position.distance_to(player_pos) <= chase_range and not player.dead:
 		direction = global_position.direction_to(player_pos)
 	else:
 		if is_on_wall() and $BounceDelay.is_stopped():
