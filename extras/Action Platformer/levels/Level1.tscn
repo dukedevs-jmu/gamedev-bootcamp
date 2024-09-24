@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://d3wi1sx86vdow"]
 
-[ext_resource type="PackedScene" uid="uid://bfin7jj20r676" path="res://extras/Action Platformer/levels/ActionBase.tscn" id="1_ek1ll"]
+[ext_resource type="PackedScene" path="res://extras/Action Platformer/levels/ActionBase.tscn" id="1_ek1ll"]
 [ext_resource type="PackedScene" uid="uid://cw2fv3b7ftjh8" path="res://extras/Action Platformer/objects/enemy/Enemy.tscn" id="2_wlj71"]
 [ext_resource type="AudioStream" uid="uid://deeshx062m2hj" path="res://audio/music/travels.ogg" id="3_2kyaf"]
 
