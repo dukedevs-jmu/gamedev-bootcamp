@@ -7,7 +7,7 @@ const GRAVITY = 16
 const BULLET_SPEED = 300
 
 # Preload the bullet scene at the game's startup
-var bullet_scene = preload("res://extras/Action Platformer/Bullet.tscn")
+var bullet_scene = preload("res://extras/Action Platformer/objects/bullet/Bullet.tscn")
 
 func _physics_process(delta):
 	# You can use functions to keep code organized!
