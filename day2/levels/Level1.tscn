@@ -13,3 +13,15 @@ position = Vector2(104, -56)
 
 [node name="Music" parent="." index="2"]
 stream = ExtResource("2_2fpea")
+
+[connection signal="body_entered" from="TileMapLayer/Coin" to="TileMapLayer/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27425" to="TileMapLayer/@Area2D@27425" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27426" to="TileMapLayer/@Area2D@27426" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27427" to="TileMapLayer/@Area2D@27427" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27428" to="TileMapLayer/@Area2D@27428" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27429" to="TileMapLayer/@Area2D@27429" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27430" to="TileMapLayer/@Area2D@27430" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27431" to="TileMapLayer/@Area2D@27431" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27432" to="TileMapLayer/@Area2D@27432" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27433" to="TileMapLayer/@Area2D@27433" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@27434" to="TileMapLayer/@Area2D@27434" method="_on_body_entered"]

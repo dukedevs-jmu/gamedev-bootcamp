@@ -1,7 +1,7 @@
 extends Node2D
 
-@export_file var next_level
+@export var next_level : PackedScene
 
 func _on_goal_player_win():
 	if next_level != null:
-		get_tree().change_scene_to_file(next_level)
+		get_tree().change_scene_to_packed_scene(next_level)
