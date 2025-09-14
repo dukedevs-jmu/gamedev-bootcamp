@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnb3biyruuawy"]
+
+[ext_resource type="Texture2D" uid="uid://d1kcynkh7l3ju" path="res://extras/3D Platformer/grass_3d.png" id="1_78mhm"]
+
+[resource]
+albedo_texture = ExtResource("1_78mhm")
+uv1_triplanar = true
+texture_filter = 0

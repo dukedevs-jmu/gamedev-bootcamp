@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy6wv16hqvj7j"
-path.s3tc="res://.godot/imported/guy.png-fd386a1dabcf6c72d34b04d48c00c8cf.s3tc.ctex"
+uid="uid://7kwjktfhxw0q"
+path.s3tc="res://.godot/imported/tile_3d.png-cde87e347ab85cf5f0c6dbe247289f57.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/guy.png"
-dest_files=["res://.godot/imported/guy.png-fd386a1dabcf6c72d34b04d48c00c8cf.s3tc.ctex"]
+source_file="res://extras/3D Platformer/tile_3d.png"
+dest_files=["res://.godot/imported/tile_3d.png-cde87e347ab85cf5f0c6dbe247289f57.s3tc.ctex"]
 
 [params]
 

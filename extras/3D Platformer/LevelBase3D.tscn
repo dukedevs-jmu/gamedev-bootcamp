@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2cs1jby6t3vb"]
+
+[ext_resource type="Material" uid="uid://dvnlv38icrsqf" path="res://extras/3D Platformer/BlockMaterial.tres" id="1_i75wt"]
+[ext_resource type="Script" path="res://extras/3D Platformer/Player3D.gd" id="1_nci3d"]
+[ext_resource type="Material" uid="uid://bnb3biyruuawy" path="res://extras/3D Platformer/GrassMaterial.tres" id="2_kfngd"]
+[ext_resource type="Texture2D" uid="uid://cy6wv16hqvj7j" path="res://art/guy.png" id="2_tpmst"]
+[ext_resource type="AudioStream" uid="uid://lk8e5wmeyi11" path="res://audio/jump.wav" id="4_m2g8i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_363lw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n808l"]
+material = ExtResource("1_i75wt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t1mka"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tkrk2"]
+material = ExtResource("2_kfngd")
+size = Vector3(15, 1, 15)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_matn4"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="Environment" id="Environment_2w77s"]
+
+[node name="LevelBase3d" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Block1" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Block1"]
+shape = SubResource("BoxShape3D_363lw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Block1"]
+mesh = SubResource("BoxMesh_n808l")
+
+[node name="Block2" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Block2"]
+shape = SubResource("BoxShape3D_363lw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Block2"]
+mesh = SubResource("BoxMesh_n808l")
+
+[node name="Block3" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Block3"]
+shape = SubResource("BoxShape3D_363lw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Block3"]
+mesh = SubResource("BoxMesh_n808l")
+
+[node name="Block4" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Block4"]
+shape = SubResource("BoxShape3D_363lw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Block4"]
+mesh = SubResource("BoxMesh_n808l")
+
+[node name="Block5" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.5, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Block5"]
+shape = SubResource("BoxShape3D_363lw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Block5"]
+mesh = SubResource("BoxMesh_n808l")
+
+[node name="Floor" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor"]
+shape = SubResource("BoxShape3D_t1mka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor"]
+mesh = SubResource("BoxMesh_tkrk2")
+
+[node name="Player3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+script = ExtResource("1_nci3d")
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+stream = ExtResource("4_m2g8i")
+
+[node name="Camera3D" type="Camera3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.54409, 3.90556)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343009, 0)
+shape = SubResource("CapsuleShape3D_matn4")
+
+[node name="Sprite3D" type="Sprite3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47284, 0)
+pixel_size = 0.075
+billboard = 1
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_tpmst")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502282, 0)
+light_color = Color(1, 1, 0.0509804, 1)
+light_energy = 7.486
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2w77s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.750803, 0.552944, -0.361313, 0, 0.547008, 0.837127, 0.660526, -0.628518, 0.410695, 0, 0, 0)

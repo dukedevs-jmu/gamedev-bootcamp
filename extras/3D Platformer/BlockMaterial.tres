@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvnlv38icrsqf"]
+
+[ext_resource type="Texture2D" uid="uid://7kwjktfhxw0q" path="res://extras/3D Platformer/tile_3d.png" id="1_sphg2"]
+
+[resource]
+albedo_texture = ExtResource("1_sphg2")
+uv1_triplanar = true
+texture_filter = 0
